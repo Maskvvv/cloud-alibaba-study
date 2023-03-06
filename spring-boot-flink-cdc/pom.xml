@@ -19,7 +19,11 @@
         <flink.version>1.13.6</flink.version>
     </properties>
     <dependencies>
-
+        <dependency>
+            <groupId>cn.easy-es</groupId>
+            <artifactId>easy-es-boot-starter</artifactId>
+            <version>1.1.1</version>
+        </dependency>
 
         <dependency>
             <groupId>org.apache.flink</groupId>

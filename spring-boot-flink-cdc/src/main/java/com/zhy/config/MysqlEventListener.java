@@ -40,6 +40,7 @@ public class MysqlEventListener implements ApplicationRunner {
         DataStream<DataChangeInfo> streamSource = env
                 .addSource(dataChangeInfoMySqlSource, "mysql-source")
                 .setParallelism(1);
+
         streamSource.addSink(dataChangeSink);
 
         env.execute("mysql-stream-cdc");
