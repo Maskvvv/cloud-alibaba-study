@@ -68,7 +68,7 @@ public class MysqlEventListener implements ApplicationRunner {
                  * latest:只进行增量导入(不读取历史变化)
                  * timestamp:指定时间戳进行数据导入(大于等于指定时间错读取数据)
                  */
-                .startupOptions(StartupOptions.latest())
+                .startupOptions(StartupOptions.initial())
                 .deserializer(new MysqlDeserialization())
                 .serverTimeZone("GMT+8")
                 .build();

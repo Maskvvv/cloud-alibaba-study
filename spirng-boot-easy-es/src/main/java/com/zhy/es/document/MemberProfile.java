@@ -6,10 +6,8 @@
 package com.zhy.es.document;
 
 
-import cn.easyes.annotation.IndexField;
 import cn.easyes.annotation.IndexId;
 import cn.easyes.annotation.IndexName;
-import cn.easyes.annotation.rely.IdType;
 import lombok.Data;
 
 /**
@@ -20,12 +18,12 @@ import lombok.Data;
  */
 @Data
 @IndexName("member_profile")
-public class MemberProfile extends SuperDomain{
+public class MemberProfile {
 
     private static final long serialVersionUID = -2692133638213886759L;
 
     //用户id
-    @IndexId(type = IdType.CUSTOMIZE)
+    @IndexId
     private String memberId;
 
     //邮箱

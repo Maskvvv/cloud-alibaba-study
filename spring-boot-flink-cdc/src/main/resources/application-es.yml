@@ -1,5 +1,7 @@
 easy-es:
-  enable: true #\u9ED8\u8BA4\u4E3Atrue,\u82E5\u4E3Afalse\u5219\u8BA4\u4E3A\u4E0D\u542F\u7528\u672C\u6846\u67B6
-  address : 127.0.0.1:9200 # es\u7684\u8FDE\u63A5\u5730\u5740,\u5FC5\u987B\u542B\u7AEF\u53E3 \u82E5\u4E3A\u96C6\u7FA4,\u5219\u53EF\u4EE5\u7528\u9017\u53F7\u9694\u5F00 \u4F8B\u5982:127.0.0.1:9200,127.0.0.2:9200
-  username:  #\u82E5\u65E0 \u5219\u53EF\u7701\u7565\u6B64\u884C\u914D\u7F6E
-  password:  #\u82E5\u65E0 \u5219\u53EF\u7701\u7565\u6B64\u884C\u914D\u7F6E
+  enable: true
+  address : 127.0.0.1:9200
+  username:
+  password:
+  global-config:
+    process-index-mode: smoothly

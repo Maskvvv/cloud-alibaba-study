@@ -1,8 +1,17 @@
 package com.zhy.config;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.PropertyNamingStrategy;
+import com.alibaba.fastjson.parser.ParserConfig;
+import com.alibaba.fastjson.serializer.SerializeConfig;
+import com.zhy.es.document.MemberProfile;
+import com.zhy.es.mapper.MemberProfileMapper;
 import lombok.extern.log4j.Log4j2;
 import org.apache.flink.streaming.api.functions.sink.SinkFunction;
 import org.springframework.stereotype.Component;
+import org.springframework.ui.Model;
+
+import javax.annotation.Resource;
 
 
 /**
@@ -14,9 +23,20 @@ import org.springframework.stereotype.Component;
 @Log4j2
 public class DataChangeSink implements SinkFunction<DataChangeInfo> {
 
+    @Resource
+    private MemberProfileMapper memberProfileMapper;
+
     @Override
     public void invoke(DataChangeInfo value, Context context) {
         log.info("收到变更原始数据:{}", value);
-        // todo 数据处理;因为此sink也是交由了spring管理，您想进行任何操作都非常简单
+        String memberProfileJson = value.getAfterData();
+
+        ParserConfig parserConfig = new ParserConfig();
+        parserConfig.propertyNamingStrategy = PropertyNamingStrategy.SnakeCase;
+        MemberProfile memberProfile = JSON.parseObject(memberProfileJson, MemberProfile.class, parserConfig);
+
+        log.info("收到变更原始数据:{}", memberProfile);
+
+        memberProfileMapper.insert(memberProfile);
     }
 }
