@@ -5,9 +5,14 @@ import com.ververica.cdc.connectors.mysql.table.StartupOptions;
 import com.ververica.cdc.debezium.DebeziumSourceFunction;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
+import org.springframework.beans.factory.config.BeanPostProcessor;
+import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -25,6 +30,9 @@ public class MysqlEventListener implements ApplicationRunner {
 
     @Resource
     private FlinkProperties flinkProperties;
+
+    @Resource
+    private ThreadPoolTaskExecutor flinkTaskThreadPool;
 
     @Autowired
     public MysqlEventListener(DataChangeSink dataChangeSink) {
@@ -68,7 +76,7 @@ public class MysqlEventListener implements ApplicationRunner {
                  * latest:只进行增量导入(不读取历史变化)
                  * timestamp:指定时间戳进行数据导入(大于等于指定时间错读取数据)
                  */
-                .startupOptions(StartupOptions.initial())
+                .startupOptions(StartupOptions.specificOffset("binlog.000003", 12064))
                 .deserializer(new MysqlDeserialization())
                 .serverTimeZone("GMT+8")
                 .build();

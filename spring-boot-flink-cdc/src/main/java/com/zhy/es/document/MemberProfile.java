@@ -32,6 +32,7 @@ public class MemberProfile extends SuperDomain{
     private String email;
 
     //手机号
+    @IndexField()
     private String mobile;
 
     //性别0女1男

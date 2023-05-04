@@ -28,7 +28,9 @@ public class DataChangeSink implements SinkFunction<DataChangeInfo> {
 
     @Override
     public void invoke(DataChangeInfo value, Context context) {
-        log.info("收到变更原始数据:{}", value);
+
+
+        log.info("收到变更原始数据:{}", JSON.toJSONString(value));
         String memberProfileJson = value.getAfterData();
 
         ParserConfig parserConfig = new ParserConfig();
