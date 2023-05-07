@@ -22,6 +22,8 @@ import com.alibaba.nacos.api.config.ConfigService;
 import com.alibaba.nacos.api.config.listener.Listener;
 import com.alibaba.nacos.api.exception.NacosException;
 import com.alibaba.nacos.client.config.listener.impl.AbstractConfigChangeListener;
+import com.typesafe.config.Config;
+import com.typesafe.config.ConfigFactory;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.InitializingBean;
@@ -44,10 +46,10 @@ public class NacosConfigConfiguration {
 
     private final NacosConfigManager nacosConfigManager;
 
-    @Value("${spring.cloud.nacos.config.extension-configs[0].group}")
+    @Value("${spring.cloud.nacos.config.extension-configs[1].group}")
     private String group;
 
-    @Value("${spring.cloud.nacos.config.extension-configs[0].data-id}")
+    @Value("${spring.cloud.nacos.config.extension-configs[1].data-id}")
     private String dataId;
 
     public NacosConfigConfiguration(NacosConfigManager nacosConfigManager) {
@@ -81,20 +83,15 @@ public class NacosConfigConfiguration {
             @SneakyThrows
             @Override
             public void receiveConfigInfo(String configInfo) {
-
-                CharArrayReader charArrayReader = new CharArrayReader(configInfo.toCharArray());
-
-                BufferedReader bufferedReader = new BufferedReader(charArrayReader);
-                bufferedReader.readLine();
-
                 System.out.println("--------------------------------------");
 
-                String x = bufferedReader.readLine();
-                while (x != null) {
+                Config load = ConfigFactory.parseString(configInfo);
 
-                    System.out.println(x);
-                    x = bufferedReader.readLine();
-                }
+                load.entrySet().forEach(entry -> {
+                    System.out.println(entry.getKey() + "\t" + entry.getValue());
+                });
+
+
 
             }
         });
