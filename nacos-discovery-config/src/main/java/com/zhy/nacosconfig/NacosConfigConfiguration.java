@@ -24,6 +24,8 @@ import com.alibaba.nacos.api.exception.NacosException;
 import com.alibaba.nacos.client.config.listener.impl.AbstractConfigChangeListener;
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
+import com.typesafe.config.ConfigList;
+import com.typesafe.config.ConfigValue;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.InitializingBean;
@@ -35,6 +37,7 @@ import org.springframework.core.io.ByteArrayResource;
 import javax.annotation.PostConstruct;
 import java.io.BufferedReader;
 import java.io.CharArrayReader;
+import java.util.List;
 import java.util.concurrent.Executor;
 
 /**
@@ -87,10 +90,17 @@ public class NacosConfigConfiguration {
 
                 Config load = ConfigFactory.parseString(configInfo);
 
-                load.entrySet().forEach(entry -> {
-                    System.out.println(entry.getKey() + "\t" + entry.getValue());
-                });
+                //load.entrySet().forEach(entry -> {
+                //    System.out.println(entry.getKey() + "\t" + entry.getValue());
+                //});
 
+                String mapping = load.getString("mapping");
+                System.out.println(mapping);
+
+                List<String> like = load.getStringList("like");
+                for (String s : like) {
+                    System.out.println(s);
+                }
 
 
             }
