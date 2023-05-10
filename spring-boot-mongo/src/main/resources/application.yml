@@ -2,3 +2,8 @@ spring:
   data:
     mongodb:
       host: zhouhongyin.top:27017
+      database: mongo_study
+#      username: root
+#      password: 1234567788
+
+
