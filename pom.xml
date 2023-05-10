@@ -20,6 +20,7 @@
         <module>nacos-discovery-config</module>
         <module>spirng-boot-easy-es</module>
         <module>spring-boot-flink-cdc</module>
+        <module>spring-boot-mongo</module>
     </modules>
 
     <properties>

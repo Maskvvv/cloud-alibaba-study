@@ -9,7 +9,7 @@
 <!--        <relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
     </parent>
 
-    <artifactId>nacos-discovery-config</artifactId>
+    <artifactId>spring-boot-flink-cdc</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>spring-boot-flink-cdc</name>
     <description>spring-boot-flink-cdc</description>
