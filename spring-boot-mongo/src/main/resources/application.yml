@@ -1,0 +1,4 @@
+spring:
+  data:
+    mongodb:
+      host: zhouhongyin.top:27017
