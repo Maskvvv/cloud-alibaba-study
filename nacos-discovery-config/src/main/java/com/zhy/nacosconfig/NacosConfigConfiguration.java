@@ -16,14 +16,96 @@
  */
 package com.zhy.nacosconfig;
 
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import com.alibaba.cloud.nacos.NacosConfigManager;
+import com.alibaba.nacos.api.config.ConfigChangeEvent;
+import com.alibaba.nacos.api.config.ConfigService;
+import com.alibaba.nacos.api.config.listener.Listener;
+import com.alibaba.nacos.api.exception.NacosException;
+import com.alibaba.nacos.client.config.listener.impl.AbstractConfigChangeListener;
+import com.typesafe.config.Config;
+import com.typesafe.config.ConfigFactory;
+import com.typesafe.config.ConfigList;
+import com.typesafe.config.ConfigValue;
+import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.ByteArrayResource;
+
+import javax.annotation.PostConstruct;
+import java.io.BufferedReader;
+import java.io.CharArrayReader;
+import java.util.List;
+import java.util.concurrent.Executor;
 
 /**
  * @author <a href="mailto:chenxilzx1@gmail.com">theonefx</a>
  */
-@EnableAutoConfiguration
+@Slf4j
 @Configuration
 public class NacosConfigConfiguration {
+
+    private final NacosConfigManager nacosConfigManager;
+
+    @Value("${spring.cloud.nacos.config.extension-configs[1].group}")
+    private String group;
+
+    @Value("${spring.cloud.nacos.config.extension-configs[1].data-id}")
+    private String dataId;
+
+    public NacosConfigConfiguration(NacosConfigManager nacosConfigManager) {
+        this.nacosConfigManager = nacosConfigManager;
+    }
+
+    @PostConstruct
+    public void getConfig() throws NacosException {
+        //NacosConfigManager nacosConfigManager = this.nacosConfigManager;
+        //ConfigService configService = nacosConfigManager.getConfigService();
+        //
+        //String config = configService.getConfig(dataId, group, 2000);
+        //
+        //System.out.println(config);
+    }
+
+    @PostConstruct
+    public void addListener() throws NacosException {
+
+        NacosConfigManager nacosConfigManager = this.nacosConfigManager;
+        ConfigService configService = nacosConfigManager.getConfigService();
+
+        log.info("-------------------------addListener---------------------------");
+
+        configService.addListener(dataId, group, new Listener() {
+            @Override
+            public Executor getExecutor() {
+                return null;
+            }
+
+            @SneakyThrows
+            @Override
+            public void receiveConfigInfo(String configInfo) {
+                System.out.println("--------------------------------------");
+
+                Config load = ConfigFactory.parseString(configInfo);
+
+                //load.entrySet().forEach(entry -> {
+                //    System.out.println(entry.getKey() + "\t" + entry.getValue());
+                //});
+
+                String mapping = load.getString("mapping");
+                System.out.println(mapping);
+
+                List<String> like = load.getStringList("like");
+                for (String s : like) {
+                    System.out.println(s);
+                }
+
+
+            }
+        });
+    }
+
+
 }
