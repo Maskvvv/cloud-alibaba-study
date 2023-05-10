@@ -18,6 +18,8 @@
 
     <modules>
         <module>nacos-discovery-config</module>
+        <module>spirng-boot-easy-es</module>
+        <module>spring-boot-flink-cdc</module>
     </modules>
 
     <properties>
