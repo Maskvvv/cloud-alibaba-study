@@ -23,12 +23,4 @@ public class CollectionTest extends SpringBootMongoApplicationTests {
 
     }
 
-    @Test
-    public void document() {
-
-
-        mongoTemplate.save();
-
-    }
-
 }

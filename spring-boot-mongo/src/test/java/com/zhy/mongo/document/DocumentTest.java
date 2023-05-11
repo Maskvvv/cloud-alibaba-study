@@ -27,7 +27,7 @@ public class DocumentTest extends SpringBootMongoApplicationTests {
 
     @Test
     public void save() {
-        User user = new User(UUID.randomUUID().toString(), "mike", 10, new Date());
+        User user = new User(UUID.randomUUID().toString(), "name", 10, new Date());
         mongoTemplate.insert(user);
 
     }
