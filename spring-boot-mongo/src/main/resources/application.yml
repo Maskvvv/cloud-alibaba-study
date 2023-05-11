@@ -1,6 +1,9 @@
 spring:
   data:
     mongodb:
-      uri: mongodb://zhouhongyin.top:27017/mongo_study
-#      host: zhouhongyin.top:27017
+      host: zhouhongyin.top:27017
+      database: mongo_study
+#      username: root
+#      password: 1234567788
+
 
