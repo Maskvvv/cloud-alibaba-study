@@ -1,0 +1,9 @@
+{
+  "properties": [
+    {
+      "name": "flink.hostname",
+      "type": "java.lang.String",
+      ""
+      "description": "Description for flink.hostname."
+  }
+] }
