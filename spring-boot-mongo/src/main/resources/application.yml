@@ -1,4 +1,6 @@
 spring:
   data:
     mongodb:
-      host: zhouhongyin.top:27017
+      uri: mongodb://zhouhongyin.top:27017/mongo_study
+#      host: zhouhongyin.top:27017
+
