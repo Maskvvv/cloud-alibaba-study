@@ -21,6 +21,7 @@
         <module>spirng-boot-easy-es</module>
         <module>spring-boot-flink-cdc</module>
         <module>spring-boot-mongo</module>
+        <module>mysql-binlog-connector-java</module>
     </modules>
 
     <properties>

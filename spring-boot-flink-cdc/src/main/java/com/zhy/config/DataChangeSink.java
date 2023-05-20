@@ -23,8 +23,8 @@ import javax.annotation.Resource;
 @Log4j2
 public class DataChangeSink implements SinkFunction<DataChangeInfo> {
 
-    @Resource
-    private MemberProfileMapper memberProfileMapper;
+    //@Resource
+    //private MemberProfileMapper memberProfileMapper;
 
     @Override
     public void invoke(DataChangeInfo value, Context context) {
@@ -39,6 +39,6 @@ public class DataChangeSink implements SinkFunction<DataChangeInfo> {
 
         log.info("收到变更原始数据:{}", memberProfile);
 
-        memberProfileMapper.insert(memberProfile);
+        //memberProfileMapper.insert(memberProfile);
     }
 }
