@@ -22,6 +22,7 @@
         <module>spring-boot-flink-cdc</module>
         <module>spring-boot-mongo</module>
         <module>mysql-binlog-connector-java</module>
+        <module>my-mybatis</module>
     </modules>
 
     <properties>
