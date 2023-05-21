@@ -26,6 +26,22 @@ public class ClassPathMapperScanner extends ClassPathBeanDefinitionScanner {
         super(registry);
     }
 
+    //public void registerFilters() {
+    //    // default include filter that accepts all classes
+    //    addIncludeFilter((metadataReader, metadataReaderFactory) -> {
+    //        // 跳过非ee的mapper,比如瞎几把写的接口,没有继承BaseEsMapper
+    //        String className = metadataReader.getClassMetadata().get();
+    //        try {
+    //            Class<?> clazz = Class.forName(className);
+    //            return BaseEsMapper.class.isAssignableFrom(clazz);
+    //        } catch (ClassNotFoundException e) {
+    //            logger.debug("mapper not found" + e);
+    //        }
+    //        return true;
+    //    });
+    //}
+
+
     @Override
     protected Set<BeanDefinitionHolder> doScan(String... basePackages) {
         Set<BeanDefinitionHolder> beanDefinitionHolders = super.doScan(basePackages);
@@ -42,7 +58,7 @@ public class ClassPathMapperScanner extends ClassPathBeanDefinitionScanner {
             GenericBeanDefinition beanDefinition = (GenericBeanDefinition) beanDefinitionHolder.getBeanDefinition();
             beanDefinition.getConstructorArgumentValues().addGenericArgumentValue(beanDefinition.getBeanClassName());
             beanDefinition.setBeanClass(MapperFactoryBean.class);
-            //beanDefinition.setAutowireMode(AbstractBeanDefinition.AUTOWIRE_BY_TYPE);
+            beanDefinition.setAutowireMode(AbstractBeanDefinition.AUTOWIRE_BY_TYPE);
         }
     }
 
