@@ -1,8 +1,12 @@
 package com.zhy.mybt.mapper;
 
 import com.zhy.mybt.framework.MapperRegister;
+import com.zhy.mybt.framework.annotation.Query;
+import com.zhy.mybt.model.UserInfo;
 import org.springframework.context.annotation.Import;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * @author zhouhongyin
@@ -11,6 +15,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserMapper {
 
-    String getUserInfo();
+    @Query("select * from ourea.sort")
+    List<UserInfo> getUserInfo();
 
 }

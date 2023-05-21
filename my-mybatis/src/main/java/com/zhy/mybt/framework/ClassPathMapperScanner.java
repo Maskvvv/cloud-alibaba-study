@@ -21,7 +21,6 @@ import java.util.Set;
  */
 //@Component
 public class ClassPathMapperScanner extends ClassPathBeanDefinitionScanner {
-    private MapperFactoryBean mapperFactoryBean = new MapperFactoryBean();
 
     public ClassPathMapperScanner(BeanDefinitionRegistry registry) {
         super(registry);
@@ -42,8 +41,8 @@ public class ClassPathMapperScanner extends ClassPathBeanDefinitionScanner {
         for (BeanDefinitionHolder beanDefinitionHolder : beanDefinitionHolders) {
             GenericBeanDefinition beanDefinition = (GenericBeanDefinition) beanDefinitionHolder.getBeanDefinition();
             beanDefinition.getConstructorArgumentValues().addGenericArgumentValue(beanDefinition.getBeanClassName());
-            beanDefinition.setBeanClass(mapperFactoryBean.getClass());
-            beanDefinition.setAutowireMode(AbstractBeanDefinition.AUTOWIRE_BY_TYPE);
+            beanDefinition.setBeanClass(MapperFactoryBean.class);
+            //beanDefinition.setAutowireMode(AbstractBeanDefinition.AUTOWIRE_BY_TYPE);
         }
     }
 
