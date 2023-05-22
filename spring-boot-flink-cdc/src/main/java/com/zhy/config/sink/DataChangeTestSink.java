@@ -15,7 +15,9 @@ public class DataChangeTestSink implements IDataChangeSink {
 
     @Override
     public void invoke(DataChangeInfo value, Context context) throws Exception {
-
+        log.info(value.getFileName());
+        log.info(value.getFilePos());
+        log.info(value.getChangeTime());
         log.info(value.getAfterData());
     }
 }

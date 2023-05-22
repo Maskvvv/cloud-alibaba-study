@@ -78,8 +78,14 @@ public class MysqlEventListener implements ApplicationRunner {
                 /**initial初始化快照,即全量导入后增量导入(检测更新数据写入)
                  * latest:只进行增量导入(不读取历史变化)
                  * timestamp:指定时间戳进行数据导入(大于等于指定时间错读取数据)
+                 * 1956982
+                 * 1957688
+                 * 1957205
+                 *
+                 * 1958017
                  */
-                .startupOptions(StartupOptions.specificOffset("binlog.000003", 12064))
+                //.startupOptions(StartupOptions.specificOffset("binlog.000005", 1957205))
+                .startupOptions(StartupOptions.timestamp(1684762706000L))
                 .deserializer(new MysqlDeserialization())
                 .serverTimeZone("GMT+8")
                 .build();
