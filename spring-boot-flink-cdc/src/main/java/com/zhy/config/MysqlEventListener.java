@@ -16,6 +16,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * mysql变更监听
@@ -26,7 +27,7 @@ import javax.annotation.Resource;
 @Component
 public class MysqlEventListener implements ApplicationRunner {
 
-    private final IDataChangeSink dataChangeSink;
+    private final List<IDataChangeSink>  dataChangeSinks;
 
     @Resource
     private FlinkProperties flinkProperties;
@@ -35,8 +36,8 @@ public class MysqlEventListener implements ApplicationRunner {
     private ThreadPoolTaskExecutor flinkTaskThreadPool;
 
     @Autowired
-    public MysqlEventListener(IDataChangeSink dataChangeSink) {
-        this.dataChangeSink = dataChangeSink;
+    public MysqlEventListener(List<IDataChangeSink> dataChangeSinks) {
+        this.dataChangeSinks = dataChangeSinks;
     }
 
     @Override
@@ -49,7 +50,9 @@ public class MysqlEventListener implements ApplicationRunner {
                 .addSource(dataChangeInfoMySqlSource, "mysql-source")
                 .setParallelism(1);
 
-        streamSource.addSink(dataChangeSink);
+        for (IDataChangeSink dataChangeSink : dataChangeSinks) {
+            streamSource.addSink(dataChangeSink);
+        }
 
         env.execute("mysql-stream-cdc");
 

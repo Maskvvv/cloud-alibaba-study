@@ -1,6 +1,7 @@
 package com.zhy.config;
 
 import com.alibaba.fastjson.JSONObject;
+import com.google.common.base.CaseFormat;
 import com.ververica.cdc.debezium.DebeziumDeserializationSchema;
 import io.debezium.data.Envelope;
 import org.apache.flink.api.common.typeinfo.TypeInformation;
@@ -65,13 +66,10 @@ public class MysqlDeserialization implements DebeziumDeserializationSchema<DataC
     }
 
     /**
-     * 从袁术数据获取出变更之前或之后的数据
+     * 从原始数据获取出变更之前或之后的数据
      *
-     * @param value
-     * @param fieldElement
-     * @return JSONObject
-     * @author lei
-     * @date 2022-08-25 14:48:13
+     * @param value 变更数据
+     * @param fieldElement 属性名
      */
     private JSONObject getJsonObject(Struct value, String fieldElement) {
         Struct element = value.getStruct(fieldElement);
@@ -81,7 +79,7 @@ public class MysqlDeserialization implements DebeziumDeserializationSchema<DataC
             List<Field> fieldList = afterSchema.fields();
             for (Field field : fieldList) {
                 Object afterValue = element.get(field);
-                jsonObject.put(field.name(), afterValue);
+                jsonObject.put(CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, field.name()), afterValue);
             }
         }
         return jsonObject;
