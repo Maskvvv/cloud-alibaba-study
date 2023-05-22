@@ -8,6 +8,6 @@ flink:
   hostname: ${host}
   port: 3308
   databaseList: ourea
-  tableList: ourea.sys_member_profile
+  tableList: ourea.company
   username: root
   password: 1234567788

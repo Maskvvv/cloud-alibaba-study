@@ -26,7 +26,7 @@ import javax.annotation.Resource;
 @Component
 public class MysqlEventListener implements ApplicationRunner {
 
-    private final DataChangeSink dataChangeSink;
+    private final IDataChangeSink dataChangeSink;
 
     @Resource
     private FlinkProperties flinkProperties;
@@ -35,7 +35,7 @@ public class MysqlEventListener implements ApplicationRunner {
     private ThreadPoolTaskExecutor flinkTaskThreadPool;
 
     @Autowired
-    public MysqlEventListener(DataChangeSink dataChangeSink) {
+    public MysqlEventListener(IDataChangeSink dataChangeSink) {
         this.dataChangeSink = dataChangeSink;
     }
 
