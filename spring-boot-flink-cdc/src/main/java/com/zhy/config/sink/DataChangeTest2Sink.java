@@ -15,7 +15,9 @@ public class DataChangeTest2Sink implements IDataChangeSink {
 
     @Override
     public void invoke(DataChangeInfo value, Context context) throws Exception {
+        log.info("DataChangeTest2Sink start----------");
 
-        log.info(value.getAfterData());
+        Thread.sleep(5000);
+        log.info("DataChangeTest2Sink" + value.getAfterData());
     }
 }

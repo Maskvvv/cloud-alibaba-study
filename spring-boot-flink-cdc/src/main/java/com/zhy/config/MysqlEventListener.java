@@ -43,12 +43,12 @@ public class MysqlEventListener implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
-        env.setParallelism(1);
+        env.setParallelism(2);
 
         DebeziumSourceFunction<DataChangeInfo> dataChangeInfoMySqlSource = buildDataChangeSource();
         DataStream<DataChangeInfo> streamSource = env
                 .addSource(dataChangeInfoMySqlSource, "mysql-source")
-                .setParallelism(1);
+                .setParallelism(2);
 
         for (IDataChangeSink dataChangeSink : dataChangeSinks) {
             streamSource.addSink(dataChangeSink);
@@ -85,7 +85,8 @@ public class MysqlEventListener implements ApplicationRunner {
                  * 1958017
                  */
                 //.startupOptions(StartupOptions.specificOffset("binlog.000005", 1957205))
-                .startupOptions(StartupOptions.timestamp(1684762706000L))
+                //.startupOptions(StartupOptions.timestamp(1684762706000L))
+                .startupOptions(StartupOptions.latest())
                 .deserializer(new MysqlDeserialization())
                 .serverTimeZone("GMT+8")
                 .build();
