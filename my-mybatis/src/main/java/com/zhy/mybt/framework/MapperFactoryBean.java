@@ -29,6 +29,12 @@ public class MapperFactoryBean<T> implements FactoryBean<T> {
     public MapperFactoryBean() {
     }
 
+    /**
+     *  该方法是在 ClassPathMapperScanner 自定义扫描器的 reProcessBeanDefinition 方法中，
+     *  通过 definition.getConstructorArgumentValues().addGenericArgumentValue(de
+     *  这里的 rawMapperClass 就等价于 UserMapper 接口
+     * @param rawMapperClass
+     */
     public MapperFactoryBean(Class<T> rawMapperClass) {
         this.rawMapperClass = rawMapperClass;
     }
