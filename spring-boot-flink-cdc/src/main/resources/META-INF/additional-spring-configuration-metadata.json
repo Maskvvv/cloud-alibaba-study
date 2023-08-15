@@ -3,7 +3,14 @@
     {
       "name": "flink.hostname",
       "type": "java.lang.String",
-      ""
+      "sourceType": "com.zhy.config.FlinkProperties",
       "description": "Description for flink.hostname."
-  }
-] }
+    },
+    {
+      "name": "flink.port",
+      "type": "java.lang.String",
+      "sourceType": "com.zhy.config.FlinkProperties",
+      "description": "Description for flink.port."
+    }
+  ]
+}
