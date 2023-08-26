@@ -22,7 +22,7 @@ public class BaseProducer {
         producer.start();
 
         for (int i = 0; i < 10; i++) {
-            Message message = new Message("myTopic1", "taga", ("hello rocketmq" + i).getBytes(StandardCharsets.UTF_8));
+            Message message = new Message("myTopic1", "tagb", ("hello rocketmq" + i).getBytes(StandardCharsets.UTF_8));
             SendResult sendResult = producer.send(message);
             System.out.println(sendResult);
         }
