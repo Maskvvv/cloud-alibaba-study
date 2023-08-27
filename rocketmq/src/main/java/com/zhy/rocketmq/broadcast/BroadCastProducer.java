@@ -27,7 +27,7 @@ public class BroadCastProducer {
 
             String[] tags = new String[] {"TagA", "TagB", "TagC", "TagD", "TagE"};
 
-            for (int i = 0; i < 100; i++) {
+            for (int i = 0; i < 10; i++) {
                 int orderId = i % 10;
                 Message msg = new Message("BroadCastTopicTest", tags[i % tags.length], "KEY" + i,
                                 ("orderId " + orderId +" i " + i).getBytes(RemotingHelper.DEFAULT_CHARSET));
