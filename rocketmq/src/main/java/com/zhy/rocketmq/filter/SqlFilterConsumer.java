@@ -11,6 +11,8 @@ import org.apache.rocketmq.common.message.MessageExt;
 /**
  * <p> 过滤消息消费者 </p>
  *
+ *  需要开启配置 {@code enablePropertyFilter=true}
+ *
  * @author zhouhongyin
  * @since 2023/8/27 21:17
  */
