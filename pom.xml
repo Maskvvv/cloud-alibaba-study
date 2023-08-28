@@ -24,7 +24,7 @@
         <module>mysql-binlog-connector-java</module>
         <module>my-mybatis</module>
         <module>zookeeper</module>
-        <module>rocketmq</module>
+        <module>rocket-study</module>
     </modules>
 
     <properties>

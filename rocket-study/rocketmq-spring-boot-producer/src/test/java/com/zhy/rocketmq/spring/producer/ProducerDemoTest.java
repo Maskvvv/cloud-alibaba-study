@@ -1,11 +1,8 @@
 package com.zhy.rocketmq.spring.producer;
 
-import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author zhouhongyin
@@ -23,6 +20,6 @@ public class ProducerDemoTest {
         String message = "hello spring-boot rocketmq";
 
         producerDemo.sendMessage(topic, message);
-
     }
+
 }
