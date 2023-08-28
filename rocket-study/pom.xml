@@ -20,6 +20,7 @@
     <modules>
         <module>rocketmq</module>
         <module>rocketmq-spring-boot-producer</module>
+        <module>rocketmq-spring-boot-consumer</module>
     </modules>
 
 </project>
