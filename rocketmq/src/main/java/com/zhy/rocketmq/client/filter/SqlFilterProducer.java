@@ -1,4 +1,4 @@
-package com.zhy.rocketmq.filter;
+package com.zhy.rocketmq.client.filter;
 
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.client.producer.SendResult;

@@ -1,4 +1,4 @@
-package com.zhy.rocketmq.batch;
+package com.zhy.rocketmq.client.batch;
 
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.client.producer.SendResult;

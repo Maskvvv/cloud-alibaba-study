@@ -1,4 +1,4 @@
-package com.zhy.rocketmq.demo;
+package com.zhy.rocketmq.client.demo;
 
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;

@@ -1,7 +1,5 @@
-package com.zhy.rocketmq.demo;
+package com.zhy.rocketmq.client.demo;
 
-import io.netty.channel.DefaultEventLoopGroup;
-import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.client.producer.SendResult;
 import org.apache.rocketmq.common.message.Message;

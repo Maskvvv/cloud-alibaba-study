@@ -1,4 +1,4 @@
-package com.zhy.rocketmq.oredermessage;
+package com.zhy.rocketmq.client.oredermessage;
 
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
 import org.apache.rocketmq.client.consumer.listener.ConsumeOrderlyContext;
@@ -9,7 +9,6 @@ import org.apache.rocketmq.common.consumer.ConsumeFromWhere;
 import org.apache.rocketmq.common.message.MessageExt;
 
 import java.util.List;
-import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * <p>顺序消息消费者</p>
