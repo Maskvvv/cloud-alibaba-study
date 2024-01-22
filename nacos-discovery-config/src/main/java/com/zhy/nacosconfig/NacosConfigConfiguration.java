@@ -17,26 +17,17 @@
 package com.zhy.nacosconfig;
 
 import com.alibaba.cloud.nacos.NacosConfigManager;
-import com.alibaba.nacos.api.config.ConfigChangeEvent;
 import com.alibaba.nacos.api.config.ConfigService;
 import com.alibaba.nacos.api.config.listener.Listener;
 import com.alibaba.nacos.api.exception.NacosException;
-import com.alibaba.nacos.client.config.listener.impl.AbstractConfigChangeListener;
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
-import com.typesafe.config.ConfigList;
-import com.typesafe.config.ConfigValue;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.ByteArrayResource;
 
 import javax.annotation.PostConstruct;
-import java.io.BufferedReader;
-import java.io.CharArrayReader;
 import java.util.List;
 import java.util.concurrent.Executor;
 
@@ -61,12 +52,12 @@ public class NacosConfigConfiguration {
 
     @PostConstruct
     public void getConfig() throws NacosException {
-        //NacosConfigManager nacosConfigManager = this.nacosConfigManager;
-        //ConfigService configService = nacosConfigManager.getConfigService();
-        //
-        //String config = configService.getConfig(dataId, group, 2000);
-        //
-        //System.out.println(config);
+        NacosConfigManager nacosConfigManager = this.nacosConfigManager;
+        ConfigService configService = nacosConfigManager.getConfigService();
+
+        String config = configService.getConfig("easy-flink.conf", group, 2000);
+
+        System.out.println(config);
     }
 
     @PostConstruct
