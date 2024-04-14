@@ -1,6 +1,7 @@
 package com.zhy;
 
 import com.zhy.mapper.UserMapper;
+import com.zhy.module.GradeEnum;
 import com.zhy.module.User;
 import com.zhy.service.UserService;
 import org.junit.jupiter.api.Test;
@@ -53,5 +54,20 @@ class MybatisPlusTestApplicationTests {
 		List<User> users = user.selectAll();
 		users.forEach(System.out::println);
 	}
+
+
+	@Test
+	public void insertEnum() {
+
+		User user = new User();
+		user.setAge(11);
+		user.setName("zzz");
+		user.setType(GradeEnum.HIGH);
+		userMapper.insert(user);
+
+
+		userMapper.selectList(null).forEach(System.out::println);
+	}
+
 
 }
