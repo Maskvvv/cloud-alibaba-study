@@ -1,7 +1,2 @@
 easy-es:
-  enable: false
-  address : 127.0.0.1:9200
-  username:
-  password:
-  global-config:
-    process-index-mode: smoothly
+  address:
