@@ -6,7 +6,7 @@ import com.alibaba.nacos.spring.context.annotation.config.NacosPropertySource;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@EnableNacosConfig(globalProperties = @NacosProperties(serverAddr = "39.106.49.241:8848"))
+@EnableNacosConfig(globalProperties = @NacosProperties(serverAddr = "39.106.49.241:8848", namespace = "dev"))
 @NacosPropertySource(dataId = "dev.properties", autoRefreshed = true)
 public class NacosConfiguration {
 

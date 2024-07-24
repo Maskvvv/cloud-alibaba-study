@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class ConfigController {
 
     @NacosValue(value = "${age:1}", autoRefreshed = true)
-    private boolean useLocalCache;
+    private String useLocalCache;
 
     @GetMapping(value = "/get")
-    public boolean get() {
+    public String get() {
         return useLocalCache;
     }
 }
