@@ -25,6 +25,7 @@
         <module>my-mybatis</module>
         <module>zookeeper</module>
         <module>rocket-study</module>
+        <module>nacos-study</module>
     </modules>
 
     <properties>
