@@ -7,10 +7,10 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>nacos-spring</artifactId>
+    <artifactId>nacos-springboot</artifactId>
     <packaging>jar</packaging>
 
-    <name>nacos-spring</name>
+    <name>nacos-springboot</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -19,15 +19,14 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.alibaba.nacos</groupId>
-            <artifactId>nacos-spring-context</artifactId>
-            <version>1.1.1</version>
-        </dependency>
-
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.alibaba.boot</groupId>
+            <artifactId>nacos-config-spring-boot-starter</artifactId>
+            <version>0.2.12</version>
+        </dependency>
     </dependencies>
 </project>
