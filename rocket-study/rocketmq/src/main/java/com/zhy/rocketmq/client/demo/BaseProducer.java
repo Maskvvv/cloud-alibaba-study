@@ -16,7 +16,8 @@ public class BaseProducer {
 
     public static void main(String[] args) throws Exception {
         DefaultMQProducer producer = new DefaultMQProducer("my-producer-group1");
-        producer.setNamesrvAddr("localhost:9876");
+        producer.setNamesrvAddr("192.168.0.133:9876");
+        producer.setSendMsgTimeout(30000); // 设置超时时间为30秒
         producer.start();
 
         for (int i = 0; i < 10; i++) {
