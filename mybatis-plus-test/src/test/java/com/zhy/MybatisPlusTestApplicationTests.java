@@ -1,5 +1,6 @@
 package com.zhy;
 
+import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -62,6 +63,17 @@ class MybatisPlusTestApplicationTests {
 		System.out.println("-----------------------");
 		List<User> list2 = userService.list(new Page<>(1, 5));
 		list2.forEach(System.out::println);
+
+	}
+
+	@Test
+	public void page() {
+
+		List<User> list2 = userService.list(new Page<>(1, 5));
+		list2.forEach(System.out::println);
+
+		Page<User> page = userService.page(new Page<>(1, 5));
+		System.out.println(JSON.toJSONString(page));
 
 	}
 
