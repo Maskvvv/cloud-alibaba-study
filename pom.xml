@@ -27,6 +27,7 @@
         <module>rocket-study</module>
         <module>nacos-study</module>
         <module>hystrix-study</module>
+        <module>xxljob-test</module>
     </modules>
 
     <properties>
